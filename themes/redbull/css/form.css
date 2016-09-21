@@ -1,0 +1,151 @@
+div.form
+{
+}
+
+form input,
+form textarea,
+form select
+{
+	margin: 0.2em 0 0.5em 0;
+}
+
+form fieldset
+{
+	border: 1px solid #DDD;
+	padding: 10px;
+	margin: 0 0 10px 0;
+    -moz-border-radius:7px;
+}
+
+form label
+{
+	font-weight: bold;
+	font-size: 0.9em;
+	display: block;
+	font-family: "Century Gothic";
+	font-weight: bold;
+}
+
+form .hint
+{
+	margin: 0;
+	padding: 0;
+	color: #999;
+}
+
+form .note
+{
+	font-style: italic;
+	font-size: 80%;
+}
+
+form span.required
+{
+	color: red;
+}
+
+form div.error label,
+form label.error,
+form span.error
+{
+	color: #C00;
+}
+
+form div.error input,
+form div.error textarea,
+form div.error select,
+form input.error,
+form textarea.error,
+form select.error
+{
+	background: #FEE;
+	border-color: #C00;
+}
+
+form div.success input,
+form div.success textarea,
+form div.success select,
+form input.success,
+form textarea.success,
+form select.success
+{
+	background: #E6EFC2;
+	border-color: #C6D880;
+}
+
+
+.errorSummary
+{
+	margin: 0 0 20px 0;
+	font-size: 0.9em;
+	color: #C00;
+}
+
+.errorMessage
+{
+	color: red;
+	font-size: 0.9em;
+}
+
+.errorSummary p
+{
+	margin: 0;
+	padding: 0px 5px;
+}
+
+.errorSummary ul
+{
+	margin: 0;
+	padding: 0px;
+}
+
+.errorSummary ul li
+{
+	margin: 0px 20px;
+	padding: 0;
+}
+
+div.wide.form label
+{
+	float: left;
+	margin-right: 10px;
+	position: relative;
+	text-align: right;
+	width: 100px;
+}
+
+div.wide.form .row
+{
+	clear: left;
+}
+
+div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
+{
+	clear: left;
+	padding-left: 110px;
+}
+
+div .buttons {
+	padding-top: 20px;
+}
+
+ul.checkboxlist {
+	list-style-type: none;
+	margin: 0px;
+}
+
+ul.checkboxlist li {
+	margin: 0px;
+	padding: 0px;
+}
+
+ul.checkboxlist li label {
+	margin: 0px;
+	padding: 0px;
+	display: inline;
+	padding-left: 5px;
+}
+
+form div.checkbox input, form div.checkbox label {
+	display: inline;
+}

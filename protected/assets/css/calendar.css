@@ -1,0 +1,63 @@
+/*.fc-toolbar .fc-left { display: none;}*/
+.fc-center h2 {
+    font-size: 20px;
+}
+
+.appt {
+    background-color: rgba(232, 90, 70, 0.5) !important;
+
+}
+
+.fc-time-grid .fc-event, .fc-time-grid .fc-bgevent {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #0A246A !important;
+}
+
+
+#calendar {
+    margin-left: 5px;
+}
+
+.sumary {
+    font-size: 10px !important;
+}
+
+.modal-lg {
+    width: 90% !important;
+}
+
+.fc-minor:hover {
+    background: #ACD781;
+}
+
+.f-operation {
+    display: none;
+}
+
+.error-time {
+    background: #DA4A38;
+    color: #FFFFFF;
+    padding: 10px;
+    font-weight: bold;
+    width: 95%;
+    display: none;
+}
+
+#doctor-time-table table {
+    margin: 20px 0 20px 0;
+}
+
+#noticeBoard .panel-heading {
+    text-align: center !important;
+}
+
+#noticeBoard .panel-body {
+    font-size: 12px;
+    height: 459px;
+    overflow-y: auto;
+}
+
+#noticeBoard .panel-body hr {
+    margin: 10px 0;
+}

@@ -1,0 +1,13 @@
+div.breadcrumbs {
+    font-size: 0.9em;
+    padding: 5px 20px;
+    float: left;
+}
+
+div.breadcrumbs span {
+    font-weight: bold;
+}
+
+li.notice-completed{
+    text-decoration: line-through;
+}

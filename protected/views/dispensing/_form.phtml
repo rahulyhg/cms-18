@@ -1,0 +1,304 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use common\models\Customer;
+use yii\jui\DatePicker;
+
+/* @var $this yii\web\View */
+/* @var $model common\models\Customer */
+/* @var $form yii\widgets\ActiveForm */
+?>
+
+<div class="portlet light bordered">
+    <div class="portlet-body form">
+        <div class="form-horizontal"> 
+            <?php $form = ActiveForm::begin([
+                                'enableClientValidation'=>false,
+                                'enableAjaxValidation'=>false,
+                            ]
+                    ); ?>
+            <div class="form-body">
+                <h3 class="form-section">Invoice Details</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <?php if (!$model->isNewRecord):?>
+                           <div class="form-group">
+                                <label class="control-label col-md-4">
+                                    <?php
+                                        echo Yii::t('app','Customer');
+                                    ?>
+                                </label>
+                                <p class="form-control-static" style="padding-left:15px;">
+                                    <?php
+                                        echo $model->customer? $model->customer->name : '';
+                                    ?>
+                                </p>
+                            </div>
+                        <?php
+                         else:
+                             if(isset($customer_id)) {
+                                    echo $form->field($model, 'customer_id', [
+                                        'template' => "{label}\n<div class='col-md-8'>{input}\n{error}</div>",
+                                        'labelOptions' => ['class' => 'control-label col-md-4']
+                                    ])->dropDownList($model->getDropDownListCustomer($customer_id, NULL));
+                         
+                             }
+                             else {
+                                 echo $form->field($model, 'customer_id', [
+                                        'template' => "{label}\n<div class='col-md-8'>{input}\n{error}</div>",
+                                        'labelOptions' => ['class' => 'control-label col-md-4']
+                                    ])->dropDownList($model->getDropDownListCustomer(null, Yii::$app->user->getId()), ['prompt' => 'Select Customer']);
+                             }
+                        endif;
+                        ?>  
+                        <?php
+                                 if (!empty($model->customer_id) && !$model->isNewRecord):
+                         ?>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4">
+                                            <?php
+                                                echo Yii::t('app','Jobs');
+                                            ?>
+                                        </label>
+                                        <p class="form-control-static" style="padding-left:15px;">
+                                            <?php
+                                                echo $model->job? $model->job->service : '';
+                                            ?>
+                                        </p>
+                                    </div>
+                       
+                        <?php 
+                            else: 
+                                if(isset($customer_id)) {
+                                    echo $form->field($model, 'job_id', [
+                                        'template' => "{label}\n<div class='col-md-8'><img src='" . Yii::$app->urlManager->hostInfo . '/public/tpl/img/input-spinner.gif' . "' class='image-loading-model hide' />{input}\n{error}</div>",
+                                        'labelOptions' => ['class' => 'control-label col-md-4']
+                                    ])->dropDownList($model->getDropDownListJobsByCustomer($customer_id), ['prompt' => 'Select Jobs']);
+                                }
+                                else {   
+                                        if(!empty($model->customer_id)) {
+                                          echo $form->field($model, 'job_id', [
+                                              'template' => "{label}\n<div class='col-md-8'><img src='" . Yii::$app->urlManager->hostInfo . '/public/tpl/img/input-spinner.gif' . "' class='image-loading-model hide' />{input}\n{error}</div>",
+                                              'labelOptions' => ['class' => 'control-label col-md-4']
+                                          ])->dropDownList($model->getDropDownListJobsByCustomer($model->customer_id), ['prompt' => 'Select Jobs', 'readonly' => false]);
+                                        }
+                                        else {
+                                            echo $form->field($model, 'job_id', [
+                                              'template' => "{label}\n<div class='col-md-8'><img src='" . Yii::$app->urlManager->hostInfo . '/public/tpl/img/input-spinner.gif' . "' class='image-loading-model hide' />{input}\n{error}</div>",
+                                              'labelOptions' => ['class' => 'control-label col-md-4']
+                                            ])->dropDownList([], ['prompt' => 'Select Jobs', 'readonly' => false]);
+                                        }
+                                }
+                            endif;
+                        ?>                   
+                    </div>
+                    <div class="col-md-6">
+                        <?=
+                        $form->field($model, 'invoice_number', [
+                            'template' => "{label}<div class='col-md-4'>{input}\n{error}</div>",
+                            'labelOptions' => ['class' => 'control-label col-md-3']
+                        ])->textInput(['maxlength' => true,'placeholder' =>'auto generate'])
+                        ?>
+                        <?=
+                        $form->field($model, 'date', [
+                            'template' => "{label}<div class='col-md-4'>{input}\n{error}</div>",
+                            'labelOptions' => ['class' => 'control-label col-md-3']
+                        ])->widget(DatePicker::className(), ['dateFormat' => common\components\CommonUtils::getParameter('formatter.datePicker','php:d-M-Y'), 'options' => ['class' => 'form-control col-md-3', 'readonly' => true,'placeholder' =>'Date']]);
+                        ?> 
+                        
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="col-md-6">
+                        <?= $form->field($model, 'terms', [
+                            'template' => "{label}\n<div class='col-md-8'>{input}</div>\n{error}",
+                            'labelOptions'=> ['class'=>'control-label col-md-4']
+                        ])->textarea(['rows' => 6]) ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?= $form->field($model, 'note', [
+                            'template' => "{label}\n<div class='col-md-8'>{input}</div>\n{error}",
+                            'labelOptions'=> ['class'=>'control-label col-md-3']
+                        ])->textarea(['rows' => 6]) ?>
+                    </div>
+                </div>
+                <div class="clearfix row">
+                </div>
+                <h3 class="form-section">Invoice Items</h3>
+                <div class="row">
+                    <div class="col-md-10  col-md-offset-2">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                        <th class="col-md-3">
+                        <div class="form-group field-customerinvoiceitems-name required has-error">
+                            <label class="col-md-12" for="customerinvoiceitems-name">Product/Service</label>
+                        </div>                                    
+                        </th>
+                        <th  class="col-md-2">
+                        <div class="form-group field-customerinvoiceitems-name required has-error">
+                            <label class="col-md-12" for="customerinvoiceitems-name">Quantity</label>
+                        </div>                                    
+                        </th>
+                        <th  class="col-md-2">
+                        <div class="form-group field-customerinvoiceitems-name required has-error">
+                            <label class="col-md-12" for="customerinvoiceitems-price">Price</label>
+                        </div>                                    
+                        </th>
+                        <th  class="col-md-2">
+                        <div class="form-group field-customerinvoiceitems-name required has-error">
+                            <label class="col-md-12" for="customerinvoiceitems-tax">Tax</label>
+                        </div>                                    
+                        </th>
+                        <th  class="col-md-2">
+                        <div class="form-group field-customerinvoiceitems-total">
+                            <label class="col-md-12" for="customerinvoiceitems-total">Total</label>
+                        </div>                                    
+                        </th>
+                        <th  class="col-md-1">
+                        </th>
+                        </thead>
+                        <tbody class="invoice-main">
+                            <?php 
+                                $number = 0;
+                                foreach ($invoiceItem as $index => $item):?>
+                                <?php 
+                                
+                                    if(empty($invoiceItem[$index]->quantity) || empty($invoiceItem[$index]->price) ) {
+                                            $invoiceItem[$index]->total = '0.00';
+                                        }
+                                        else {                   
+                                             $invoiceItem[$index]->total = \common\components\HtmlUtils::asCurrency($invoiceItem[$index]->quantity * $invoiceItem[$index]->price);
+                                            
+                                        }
+                                    ?>
+                                
+                             
+                            <tr class="invoice-item">
+                                <td class="col-md-3">
+                                     <input type="text" id="customerinvoiceitems-<?php echo $index;?>-id" class="form-control item-id hide" name="CustomerInvoiceItems[<?= $index;?>][id]" value="<?= $item->id ?>">
+                                    <?=
+                                    $form->field($invoiceItem[$index], '['.$index.']service_id', [
+                                        'template' => "<div class='col-md-12'>{input}\n{error}</div>",
+                                    ])->dropdownList(ArrayHelper::map(\common\models\ProductService::getAllService($model->owner_id,$item->service_id),'id','name'),['prompt'=>'Select a Product / Service','class'=>'form-control item-service'])->label(false);
+                                    ?>
+                                </td>
+                                <td class="col-md-2">
+                                    <?=
+                                    $form->field($invoiceItem[$index], '['.$index.']quantity', [
+                                        'template' => "<div class='col-md-12'>{input}\n{error}</div>",
+                                    ])->textInput(['maxlength' => true,'class' => 'form-control item-quantity','type'=>'number'])->label(false);
+                                    ?>
+                                </td>
+                                <td class="col-md-2">
+                                    <?=
+                                    $form->field($invoiceItem[$index], '['.$index.']price', [
+                                        'template' => "<div class='col-md-12'>{input}\n{error}</div>",
+                                    ])->textInput(['maxlength' => true,'class' => 'form-control item-price','type'=>'number','step'=>'0.01'])->label(false);
+                                    ?>
+                                </td>
+                                <td class="col-md-2">
+                                     <?=
+                                        $form->field($invoiceItem[$index], '['.$index.']tax', [
+                                             'template' => "<div class='col-md-12'>{input}\n{error}</div>",
+                                             'labelOptions' => ['class' => 'control-label col-md-4']
+                                         ])->dropDownList([0=>0], ['maxlength' => true,'class' => 'form-control item-tax']);
+                                    ?>
+                                </td>
+                                <td class="col-md-2">
+                                    <?=
+                                    $form->field($invoiceItem[$index], '['.$index.']total', [
+                                        'template' => "<div class='col-md-12'>{input}\n{error}</div>",
+                                    ])->textInput(['maxlength' => true, 'readonly' => true,'class' => 'form-control item-total'])->label(false);
+                                    ?>
+                                </td>
+                                 <td  class="col-md-1">
+                                     <i class="remove-icon glyphicon glyphicon-trash"></i>
+                                 </td>
+                            </tr>
+                            <?php 
+                            $number = $index;
+                            endforeach;?>
+                        </tbody>
+                    </table>
+                    </div>
+                    <div class="col-md-10 col-md-offset-2">
+                        <div class="invoice-icon">
+                            <i class="glyphicon glyphicon-plus" data-number ="<?php echo $number+1;?>"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div  class="col-md-10 col-md-offset-2">
+                        <?=
+                        $form->field($model, 'subtotal', [
+                            'template' => "{label}<div class='col-md-2'>{input}\n{error}</div>",
+                            'labelOptions' => ['class' => 'control-label col-md-10']
+                        ])->textInput(['maxlength' => true, 'readonly' => true,'placeholder' =>'0.00',' style' => 'background: white;border: none;'])
+                        ?>
+                        <?=
+                        $form->field($model, 'total', [
+                            'template' => "{label}<div class='col-md-2'>{input}\n{error}</div>",
+                            'labelOptions' => ['class' => 'control-label col-md-10']
+                        ])->textInput(['maxlength' => true, 'readonly' => true,'placeholder' =>'0.00','style' => 'background: white;border: none;'])
+                        ?>
+                        <?=
+                        $form->field($model, 'total_received', [
+                            'template' => "{label}<div class='col-md-2'>{input}\n{error}</div>",
+                            'labelOptions' => ['class' => 'control-label col-md-10']
+                        ])->textInput(['maxlength' => true, 'readonly' => true,'placeholder' =>'0.00','style' => 'background: white;border: none;'])
+                        ?>
+                        <?=
+                        $form->field($model, 'amount_due', [
+                            'template' => "{label}<div class='col-md-2'>{input}\n{error}</div>",
+                            'labelOptions' => ['class' => 'control-label col-md-10']
+                        ])->textInput(['maxlength' => true, 'readonly' => true,'placeholder' =>'0.00','style' => 'background: white;border: none;'])
+                        ?>
+                </div>
+                
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-offset-4 col-md-8">
+                                <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                                &nbsp;or
+                                <?php
+                                    if(!isset(Yii::$app->session['report_invoice'])):
+                                           if (isset($customer_id) && !empty($customer_id)):
+                                               echo Html::a(Yii::t('app', 'Back'), ['/invoice', 'customer_id' => $customer_id], ['class' => 'btn btn-link']);
+                                           else:
+                                               echo Html::a(Yii::t('app', 'Back'), ['/invoice', 'customer_id' => $model->customer_id], ['class' => 'btn btn-link']);
+                                           endif;
+                                    else:
+                                           echo Html::a(Yii::t('app', 'Back'), ['/report/invoice'], ['class' => 'btn btn-link']);
+                                    endif;
+                                 ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+
+                </div>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
+</div>
+<style>
+    .pac-container:after {
+        /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
+        background-image: none !important;
+        height: 0px;
+    }
+</style>
+<?php
+   $this->registerJsFile('/public/js/invoice.js',['depends' => [\yii\web\JqueryAsset::className()]]); 
+   $this->registerJs('Invoice.init();',\yii\web\View::POS_END);
+?>

@@ -1,0 +1,176 @@
+/*
+* <Jason>
+*/
+/*.table-bordered > thead > tr > th.checkbox-column, 
+.table-bordered > tbody > tr > th.checkbox-column, 
+.table-bordered > tfoot > tr > th.checkbox-column, 
+.table-bordered > thead > tr > td.checkbox-column, 
+.table-bordered > tbody > tr > td.checkbox-column, 
+.table-bordered > tfoot > tr > td.checkbox-column{
+    border-right: none !important;
+}*/
+
+.panel-body .empty{
+    font-style: italic;
+}
+
+#patient-grid tbody:hover {
+    cursor: pointer
+}
+
+.box-body .summary{
+    display: none;
+}
+
+span.required, .errorMessage{
+    color: red;
+}
+
+/*#Patient-form{
+    margin-top: 50px;
+}*/
+
+.header-right
+{
+    float: right;
+    font-size: 14px;
+    line-height: 45px;
+    width: 49%;
+    text-align: right;
+}
+
+.header-left
+{
+    width: 50%;
+    float: left;
+}
+
+.nav-list .panel-heading,
+body{
+    background-color: white;
+    /*padding-bottom: 132px;*/
+}
+
+.date-of-birth {
+    display: inline-flex;    
+}
+
+/*
+.add-new .date-of-birth{
+    float: left;
+    position: relative;
+}
+
+.add-new .date-of-birth input{
+    float: left;
+}
+
+.add-new .date-of-birth .ui-datepicker-trigger{
+    position: absolute;
+    top: 5px;
+}
+
+.add-new .date-of-birth{
+    width: 90%;
+}
+
+.add-new-patient .text-label{
+    width: 30%;
+}
+
+.add-new-patient .text-label label{
+    margin-top: 13px;    
+}
+
+.add-new-patient .form-group .form-control{
+    padding: 5px;
+}
+
+.add-new-patient .input-patients{
+    width: 70%;    
+}
+
+.add-new .row{
+    border-bottom: 2px solid #000;
+}
+
+.add-new-patient .row{
+    margin: 0;
+}
+
+.add-new-patient .row_ad strong{
+    margin-left: 10px;
+}
+
+.add-new-patient .postal-base-code{
+    width: 27%;
+
+}
+
+.add-new-patient .postal-code{
+    width: 70%;
+    float: left;
+    margin-right: 5px;
+}
+
+.add-new-patient .clearfix{
+    content: " ";
+    display: inherit;
+}
+
+.patient-profile #my-tab-content .title-tab{
+    margin-left: 23px;
+}
+
+.patient-profile .nav-tabs li.active a{
+    font-weight: bold;
+    color: red;
+}
+
+.despensing-history-prescription .homequeue{
+    min-height: 200px;
+    height: 200px;
+}
+
+.patient-profile label{
+    font-weight: bold;
+}
+
+.lagend-custom{
+    text-align: center;
+    width: 90px;
+    border-color: #ddd #ddd transparent;
+}
+
+.patient-profile .nav-tabs a.active{
+    font-weight: bold;
+    color: red !important;
+}
+*/
+
+.date-of-birth input{
+    width: 95%;
+    float: left;
+}
+
+.columns label.radio-inline, .columns label.checkbox-inline{
+    min-width: 190px;
+    vertical-align: top;
+    width: 22%;
+}
+
+label.radio-inline, label.checkbox-inline, label.radio, label.checkbox{
+    background-color: #dcdfd4;
+    cursor: pointer;
+    font-weight: 400;
+    margin-bottom: 10px !important;
+    margin-right: 2%;
+    margin-left: 0;
+    padding: 10px 10px 10px 30px;
+}
+
+label.radio-inline.checked, label.checkbox-inline.checked, label.radio.checked, label.checkbox.checked{
+    background-color: #266c8e;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px #000 !important;
+}

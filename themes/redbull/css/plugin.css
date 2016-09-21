@@ -1,0 +1,573 @@
+/*
+Uniform Theme: Uniform Default
+Version: 1.8
+By: Josh Pyles
+License: MIT License
+---
+For use with the Uniform plugin:
+http://uniformjs.com/
+
+*/
+/* General settings */
+div.selector,
+div.selector span,
+div.checker span,
+div.radio span,
+div.uploader,
+div.uploader span.action,
+div.button,
+div.button span {
+  -webkit-font-smoothing: antialiased; }
+
+.selector,
+.checker,
+.button,
+.radio,
+.uploader {
+  display: -moz-inline-box;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  vertical-align: middle; }
+
+.selector select:focus,
+.radio input:focus,
+.checker input:focus,
+.uploader input:focus {
+  outline: 0; }
+
+.selector,
+.radio,
+.checker,
+.uploader,
+.button,
+.selector *,
+.radio *,
+.checker *,
+.uploader *,
+.button * {
+  margin: 0;
+  padding: 0; }
+
+.highContrastDetect {
+  width: 0px;
+  height: 0px; }
+
+/* Input & Textarea */
+input.text,
+input.email,
+input.search,
+input.tel,
+input.url,
+input.datetime,
+input.date,
+input.month,
+input.week,
+input.time,
+input.datetime-local,
+input.number,
+input.color,
+input.password,
+select.uniform-multiselect,
+textarea.uniform {
+  outline: 0; }
+
+/* Remove default webkit and possible mozilla .search styles */
+div.checker input,
+input.search,
+input.search:active {
+  -moz-appearance: none;
+  -webkit-appearance: none; }
+
+input.text:focus,
+input.email:focus,
+input.search:focus,
+input.tel:focus,
+input.url:focus,
+input.datetime:focus,
+input.date:focus,
+input.month:focus,
+input.week:focus,
+input.time:focus,
+input.datetime-local:focus,
+input.number:focus,
+input.color:focus,
+input.password:focus,
+select.uniform-multiselect:focus,
+textarea.uniform:focus { }
+
+/* Select */
+div.selector {
+	background: #fff;
+  line-height: 35px;
+  height: 35px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  font-size: 11px;
+  width: 100% !important; }
+
+div.selector.fixedWidth {
+  width: 190px; }
+
+div.selector span {
+  background: url(../img/bg-select.png) no-repeat right top;
+  border: #ccc solid 1px;
+  border-radius: 3px;
+  color: #333;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 33px;
+  line-height: 33px;
+  cursor: pointer;
+  display: block;
+  padding: 0 25px 0 10px;
+  width: auto !important; }
+
+div.selector.fixedWidth span {
+  width: 155px; }
+
+div.selector select {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  border: none;
+  background: none;
+  position: absolute;
+  height: 33px;
+  top: 0px;
+  left: 0px;
+  width: 100%; }
+
+div.selector.disabled,
+div.selector.disabled:active,
+div.selector.disabled.active {
+  background-position: right -34px; }
+
+div.selector.disabled span,
+div.selector.disabled:active span,
+div.selector.disabled.active span {
+  background-position: right -34px; }
+
+/* Checkbox */
+div.checker,
+div.checker span,
+div.checker input {
+  width: 15px;
+  height: 15px; }
+
+div.checker {
+	float: left;
+  position: relative; }
+
+div.checker span {
+	background: url(../img/bg-check.png) no-repeat 0 0;
+  display: -moz-inline-box;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  text-align: center; }
+
+div.checker input {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  border: none;
+  background: none;
+  display: -moz-inline-box;
+  display: inline-block;
+  *display: inline;
+  zoom: 1; }
+
+div.checker:active span,
+div.checker.active span {
+  background-position: 0 0; }
+
+div.checker.focus span,
+div.checker:hover span {
+  background-position: 0 0; }
+
+div.checker.focus:active span,
+div.checker:active:hover span,
+div.checker.active:hover span,
+div.checker.focus.active span {
+  background-position: 0 0; }
+
+div.checker span.checked {
+  background-position: 0 -25px; }
+
+div.checker:active span.checked,
+div.checker.active span.checked {
+  background-position: 0 -25px; }
+
+div.checker.focus span.checked,
+div.checker:hover span.checked {
+  background-position: 0 -25px; }
+
+div.checker.focus:active span.checked,
+div.checker:hover:active span.checked,
+div.checker.active:hover span.checked,
+div.checker.active.focus span.checked {
+  background-position: 0 -25px; }
+
+div.checker.disabled span,
+div.checker.disabled:active span,
+div.checker.disabled.active span {
+  background-position: 0 -50px; }
+
+div.checker.disabled span.checked,
+div.checker.disabled:active span.checked,
+div.checker.disabled.active span.checked {
+  background-position: 0 -75px; }
+
+/* Radio */
+div.radio,
+div.radio span,
+div.radio input {
+	margin: 0 !important;
+  width: 16px;
+  height: 16px; }
+
+div.radio {
+  position: relative; }
+
+div.radio span {
+	background: url(../img/bg-radio.png) no-repeat 0 0;
+  display: -moz-inline-box;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  text-align: center;
+  }
+
+div.radio input {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  border: none;
+  background: none;
+  display: -moz-inline-box;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  text-align: center;
+  margin-left: 0 !important; }
+
+div.radio:active span,
+div.radio.active span {
+  background-position: 0 0; }
+
+div.radio.focus span,
+div.radio:hover span {
+  background-position: 0 0; }
+
+div.radio.focus:active span,
+div.radio:active:hover span,
+div.radio.active:hover span,
+div.radio.active.focus span {
+  background-position: 0 0; }
+
+div.radio span.checked {
+  background-position: 0 -20px; }
+
+div.radio:active span.checked,
+div.radio.active span.checked {
+  background-position: 0 -20px; }
+
+div.radio.focus span.checked,
+div.radio:hover span.checked {
+  background-position: 0 -20px; }
+
+div.radio.focus:active span.checked,
+div.radio:hover:active span.checked,
+div.radio.focus.active span.checked,
+div.radio.active:hover span.checked {
+  background-position: 0 -20px; }
+
+div.radio.disabled span,
+div.radio.disabled:active span,
+div.radio.disabled.active span {
+  background-position: 0 -40px; }
+
+div.radio.disabled span.checked,
+div.radio.disabled:active span.checked,
+div.radio.disabled.active span.checked {
+  background-position: 0 -60px; }
+
+/* Uploader */
+div.uploader {
+	background: none;
+  height: 22px;
+  width: 100%;
+  margin-bottom: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; }
+
+div.uploader span.action {
+	background: #dedede;
+	border-radius: 2px;
+	text-transform: uppercase;
+	font-size: 11px;
+  height: 22px;
+  line-height: 22px;
+  display: inline;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0 5px;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+div.uploader span.filename {
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: default;
+  height: 26px;
+  margin: 0 5px 0 0px;
+  line-height: 26px;
+  padding: 0 10px;
+  margin-right: 30px; }
+
+div.uploader input {
+	font-size: 1.3em;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  border: none;
+  background: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  float: right;
+  cursor: default;
+  width: 100%;
+  height: 100%;
+  z-index: 2; }
+
+div.uploader.focus,
+div.uploader.hover,
+div.uploader:hover {
+  background-position: -227px -3px; }
+
+div.uploader.focus span.action,
+div.uploader.hover span.action,
+div.uploader:hover span.action {
+  background-position: -227px -3px; }
+
+div.uploader.active span.action,
+div.uploader:active span.action {
+  background-position: -196px -3px; }
+
+div.uploader.focus.active span.action,
+div.uploader:focus.active span.action,
+div.uploader.focus:active span.action,
+div.uploader:focus:active span.action {
+  background-position: -196px -3px; }
+
+div.uploader.disabled {
+  background-position: -259px -3px; }
+
+div.uploader.disabled span.action {
+  background-position: -259px -3px; }
+
+/* Buttons */
+div.button a,
+div.button button,
+div.button input {
+  position: absolute;
+  display: none; }
+
+div.button {
+  background-position: 0 -641px;
+  height: 30px;
+  cursor: pointer;
+  position: relative; }
+
+div.button span {
+  display: -moz-inline-box;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  line-height: 1;
+  text-align: center;
+  background-position: right -521px;
+  height: 22px;
+  margin-left: 13px;
+  padding: 8px 15px 0 2px; }
+
+div.button.focus,
+div.button:focus,
+div.button:hover,
+div.button.hover {
+  background-position: 0 -701px; }
+
+div.button.focus span,
+div.button:focus span,
+div.button:hover span,
+div.button.hover span {
+  background-position: right -581px; }
+
+div.button.active,
+div.button:active {
+  background-position: 0 -671px; }
+
+div.button.active span,
+div.button:active span {
+  background-position: right -551px;
+  cursor: default; }
+
+div.button.disabled {
+  background-position: 0 -731px; }
+
+/* Separate from above due to IE8 */
+div.button:disabled {
+  background-position: 0 -731px; }
+
+div.button.disabled span {
+  background-position: right -611px;
+  cursor: default; }
+
+/* Separate from above due to IE8 */
+div.button:disabled span {
+  background-position: right -611px;
+  cursor: default; }
+
+/* INPUT & TEXTAREA */
+input.text,
+input.email,
+input.search,
+input.tel,
+input.url,
+input.datetime,
+input.date,
+input.month,
+input.week,
+input.time,
+input.datetime-local,
+input.number,
+input.color,
+input.password,
+select.uniform-multiselect,
+textarea.uniform {
+  /*font-size: 12px;
+  font-weight: normal;
+  color: #333;*/ }
+
+input.text:focus,
+input.email:focus,
+input.search:focus,
+input.tel:focus,
+input.url:focus,
+input.datetime:focus,
+input.date:focus,
+input.month:focus,
+input.week:focus,
+input.time:focus,
+input.datetime-local:focus,
+input.number:focus,
+input.color:focus,
+input.password:focus,
+select.uniform-multiselect:focus,
+textarea.uniform:focus {
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  border-color: #999;
+  background: #fff; }
+
+/* PRESENTATION */
+/* Buttons */
+div.button.active span,
+div.button:active span {
+  color: #555; }
+
+div.button span {
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase; }
+
+div.button.disabled span {
+  color: #bbb; }
+
+/* Separate from above due to IE8 */
+div.button:disabled span {
+  color: #bbb; }
+
+
+/* Checker */
+div.checker {
+  margin-right: 5px !important;
+ }
+
+/* Radio */
+div.radio {
+	float: left;
+	margin-right: 5px !important;
+	margin-top: 1px !important; }
+
+/* Uploader */
+div.uploader span.action {
+	 }
+
+div.uploader span.filename {
+  background: #fff;
+  font-size: 12px; }
+
+div.uploader.disabled span.action {
+  color: #aaa; }
+
+div.uploader.disabled span.filename {
+  border-color: #ddd;
+  color: #aaa; }
+
+
+
+/* scroll */
+.scroll-pane { width: 100%; overflow-x: hidden; overflow-y: auto; }
+.jspContainer {	overflow: hidden; position: relative; }
+.jspPane { position: absolute; }
+.jspVerticalBar { position: absolute; top: 0; right: 0; width: 5px; height: 100%; }
+.jspHorizontalBar {	position: absolute;	bottom: 0; left: 0;	width: 100%; height: 5px; }
+.jspCap { display: none; }
+.jspHorizontalBar .jspCap {	float: left; }
+.jspTrack {	background: #d4d4d4; position: relative; }
+.jspDrag { background: #999; position: relative; top: 0; left: 0; cursor: pointer; }
+.jspHorizontalBar .jspTrack, .jspHorizontalBar .jspDrag { float: left; height: 100%; }
+.jspArrow {	background: #50506d; text-indent: -20000px;	display: block;	cursor: pointer; padding: 0; margin: 0; }
+.jspArrow.jspDisabled {	cursor: default; }
+.jspVerticalBar .jspArrow {	height: 14px; }
+.jspHorizontalBar .jspArrow { width: 5px; float: left;	height: 100%; }
+.jspVerticalBar .jspArrow:focus { outline: none; }
+.jspCorner { background: #eeeef4; float: left; height: 100%; }
+
+/* multi select */
+.ui-multiselect { padding:2px 0 2px 4px; text-align:left }
+.ui-multiselect span.ui-icon { float:right }
+.ui-multiselect-single .ui-multiselect-checkboxes input { position:absolute !important; top: auto !important; left:-9999px; }
+.ui-multiselect-single .ui-multiselect-checkboxes label { padding:5px !important }
+
+.ui-multiselect-header { margin-bottom:3px; padding:3px 0 3px 4px }
+.ui-multiselect-header ul { font-size:0.9em }
+.ui-multiselect-header ul li { float:left; padding:0 10px 0 0 }
+.ui-multiselect-header a { text-decoration:none }
+.ui-multiselect-header a:hover { text-decoration:underline }
+.ui-multiselect-header span.ui-icon { float:left }
+.ui-multiselect-header li.ui-multiselect-close { float:right; text-align:right; padding-right:0 }
+
+.ui-multiselect-menu { display:none; padding:3px; position:absolute; z-index:10000; text-align: left }
+.ui-multiselect-checkboxes { position:relative /* fixes bug in IE6/7 */; overflow-y:auto }
+.ui-multiselect-checkboxes label { cursor:default; display:block; border:1px solid transparent; padding:3px 1px }
+.ui-multiselect-checkboxes label input { position:relative; top:1px }
+.ui-multiselect-checkboxes li { clear:both; font-size:0.9em; padding-right:3px }
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label { text-align:center; font-weight:bold; border-bottom:1px solid }
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label a { display:block; padding:3px; margin:1px 0; text-decoration:none }
+
+/* remove label borders in IE6 because IE6 does not support transparency */
+* html .ui-multiselect-checkboxes label { border:none }

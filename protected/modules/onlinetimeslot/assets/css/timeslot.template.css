@@ -1,0 +1,48 @@
+.address-name {
+    font-family: "Times New Roman";
+    color: #ad0000;
+    font-size: 18px;
+}
+.form-label { font-weight: bold; font-size: 14px;}
+.box-color-4, .box-color-5, .box-color-6, .box-color-7 {
+    background: #fee9b5;
+    color: #846109 !important;
+    border-radius: 5px;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 5px 4px;
+    text-align: center;
+    text-decoration: none !important;
+}
+
+.box-color-5 {
+    background-color: #c0dbfd;
+    background-image: none;
+    color: #846109 !important;
+}
+
+.box-color-6 {
+    background-color: #fedce8;
+    /* background-image: url(../img/bg-color-6.png); */
+}
+
+.box-color-7 {
+    background: #d8eec6;
+}
+
+.btn-delete-timeslot {
+    border: none;
+    background: url(images/delete-icon.png) no-repeat transparent;
+    height: 16px;
+    width: 16px;
+    vertical-align: text-top;
+    margin-left: .5em;
+    cursor: pointer;
+}
+
+#error_buffers {
+    color: #FF0000;
+    font-size: 14px;
+}
